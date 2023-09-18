@@ -1,4 +1,4 @@
-const teclas = document.getElementsByClassName('tecla')
+const teclas = document.querySelectorAll('.tecla')
 
 function tocarNota(e) {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
