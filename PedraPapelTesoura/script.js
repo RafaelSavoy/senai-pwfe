@@ -1,31 +1,31 @@
-let playerScore = 0;
-let computerScore = 0;
+let jogadorScore = 0;
+let computadorScore = 0;
 
-const playerChoiceElem = document.getElementById("player-choice");
-const computerChoiceElem = document.getElementById("computer-choice");
-const playerScoreElem = document.getElementById("player-score");
-const computerScoreElem = document.getElementById("computer-score");
-const resultElem = document.getElementById("result");
+const escolhaDoJogadorElem = document.getElementById("jogador-escolha");
+const escolhaDoComputadorElem = document.getElementById("computador-escolha");
+const jogadorScoreElem = document.getElementById("jogador-score");
+const computadorScoreElem = document.getElementById("computador-score");
+const resultadoElem = document.getElementById("resultado");
 
-const choices = ["rock", "paper", "scissors"];
+const escolhas = ["pedra", "papel", "tesoura"];
 
-document.getElementById("rock").addEventListener("click", () => playRound("rock"));
-document.getElementById("paper").addEventListener("click", () => playRound("paper"));
-document.getElementById("scissors").addEventListener("click", () => playRound("scissors"));
+document.getElementById("pedra").addEventListener("click", () => playRound("pedra"));
+document.getElementById("papel").addEventListener("click", () => playRound("papel"));
+document.getElementById("tesoura").addEventListener("click", () => playRound("tesoura"));
 
-function playRound(playerChoice) {
-    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+function playRound(escolhaDoJogador) {
+    const escolhaDoComputador = escolhas[Math.floor(Math.random() * escolhas.length)];
 
-    playerChoiceElem.textContent = playerChoice;
-    computerChoiceElem.textContent = computerChoice;
+    escolhaDoJogadorElem.textContent = escolhaDoJogador;
+    escolhaDoComputadorElem.textContent = escolhaDoComputador;
 
-    const result = getResult(playerChoice, computerChoice);
-    displayResult(result);
+    const resultado = gerarResultado(escolhaDoJogador, escolhaDoComputador);
+    mostrarResultado(resultado);
 
-    if (result === "Player Wins") {
-        playerScore++;
-    } else if (result === "Computer Wins") {
-        computerScore++;
+    if (resultado === "Jogador Ganhou") {
+        jogadorScore++;
+    } else if (resultado === "Computador Ganhou") {
+        computadorScore++;
     }
 
     updateScore();
@@ -33,33 +33,33 @@ function playRound(playerChoice) {
     setTimeout(resetRound, 3000);
 }
 
-function getResult(player, computer) {
-    if (player === computer) {
-        return "It's a Tie";
+function gerarResultado(jogador, computador) {
+    if (jogador === computador) {
+        return "EMPATE!!!";
     } else if (
-        (player === "rock" && computer === "scissors") ||
-        (player === "paper" && computer === "rock") ||
-        (player === "scissors" && computer === "paper")
+        (jogador === "pedra" && computador === "tesoura") ||
+        (jogador === "papel" && computador === "pedra") ||
+        (jogador === "tesoura" && computador === "papel")
     ) {
-        return "Player Wins";
+        return "Jogador Ganhou";
     } else {
-        return "Computer Wins";
+        return "Computador Ganhou";
     }
 }
 
-function displayResult(result) {
-    resultElem.textContent = result;
-    resultElem.classList.remove("hidden");
+function mostrarResultado(resultado) {
+    resultadoElem.textContent = resultado;
+    resultadoElem.classList.remove("hidden");
 }
 
 function updateScore() {
-    playerScoreElem.textContent = playerScore;
-    computerScoreElem.textContent = computerScore;
+    jogadorScoreElem.textContent = jogadorScore;
+    computadorScoreElem.textContent = computadorScore;
 }
 
 function resetRound() {
-    resultElem.classList.add("hidden");
-    playerChoiceElem.textContent = "";
-    computerChoiceElem.textContent = "";
+    resultadoElem.classList.add("hidden");
+    escolhaDoJogadorElem.textContent = "";
+    escolhaDoComputadorElem.textContent = "";
 }
 
