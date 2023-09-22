@@ -1,4 +1,4 @@
-const notasPressionadas = []
+let notasPressionadas = []
 
 function tocarNota(e) {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
@@ -16,7 +16,9 @@ window.addEventListener('keydown', (e) => !notasPressionadas.includes(e.keyCode)
 
 window.addEventListener('keyup', (e) => {
     const tecla = document.querySelector(`div[data-key="${e.keyCode}"]`)
+
     tecla.style.backgroundColor = 'white'
     tecla.style.boxShadow = ''
+    
     notasPressionadas = notasPressionadas.filter((key) => key != e.keyCode)
 })

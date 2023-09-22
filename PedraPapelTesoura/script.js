@@ -28,9 +28,9 @@ function playRound(escolhaDoJogador) {
         computadorScore++;
     }
 
-    updateScore();
+    atualizarScore();
     
-    setTimeout(resetRound, 3000);
+    setTimeout(resetar, 3000);
 }
 
 function gerarResultado(jogador, computador) {
@@ -52,12 +52,12 @@ function mostrarResultado(resultado) {
     resultadoElem.classList.remove("hidden");
 }
 
-function updateScore() {
+function atualizarScore() {
     jogadorScoreElem.textContent = jogadorScore;
     computadorScoreElem.textContent = computadorScore;
 }
 
-function resetRound() {
+function resetar() {
     resultadoElem.classList.add("hidden");
     escolhaDoJogadorElem.textContent = "";
     escolhaDoComputadorElem.textContent = "";
